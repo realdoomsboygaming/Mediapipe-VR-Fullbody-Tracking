@@ -1,5 +1,5 @@
 @echo off
 
-python\python.exe bin\mediapipepose.py
+python.exe src\mediapipepose.py
 
 pause

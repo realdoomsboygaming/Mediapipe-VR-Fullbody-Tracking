@@ -1,12 +1,12 @@
 import time
 from abc import ABC, abstractmethod
-from helpers import  sendToSteamVR
+from utils.helpers import  sendToSteamVR
 from scipy.spatial.transform import Rotation as R
 from pythonosc import osc_bundle_builder
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
 
-from helpers import shutdown
+from utils.helpers import shutdown
 import numpy as np
 
 class Backend(ABC):

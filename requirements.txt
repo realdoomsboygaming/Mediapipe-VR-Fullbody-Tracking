@@ -5,3 +5,4 @@ mediapipe
 python-osc
 pyinstaller
 flask
+customtkinter

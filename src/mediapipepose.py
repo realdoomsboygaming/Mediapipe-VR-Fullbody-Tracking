@@ -10,13 +10,14 @@ import threading
 import cv2
 import numpy as np
 
-from helpers import  CameraStream, shutdown, mediapipeTo3dpose, get_rot_mediapipe, get_rot_hands, draw_pose, keypoints_to_original, normalize_screen_coordinates, get_rot
+from utils.helpers import  CameraStream, shutdown, mediapipeTo3dpose, get_rot_mediapipe, get_rot_hands, draw_pose, keypoints_to_original, normalize_screen_coordinates, get_rot
 from scipy.spatial.transform import Rotation as R
-from backends import DummyBackend, SteamVRBackend, VRChatOSCBackend
-import webui
+from tracking.backends import DummyBackend, SteamVRBackend, VRChatOSCBackend
+import gui.webui as webui
 
-import inference_gui
-import parameters
+import gui.inference_gui as inference_gui
+from utils.parameters import Parameters
+from utils.gui_helpers import getparams
 
 import tkinter as tk
 
@@ -31,7 +32,8 @@ def main():
     
     print("INFO: Reading parameters...")
 
-    params = parameters.Parameters()
+    getparams()
+    params = Parameters()
     
     if params.webui:
         webui_thread = threading.Thread(target=webui.start_webui, args=(params,), daemon=True)
@@ -179,4 +181,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
